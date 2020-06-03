@@ -15,7 +15,7 @@ export class AbsenceIOProvider extends AbstractTrackingProvider {
 
     public async login(): Promise<void> {
         this.toolbox.print.info(
-            `To use the absence.io API you will need an API Key. To generate an API Key, please go to your profile (https://app.absence.io/#/actions/login) in your absence.io account and click on the Integrations link. Here you can generate an API Key by clicking on the 'Generate API Key' button.`,
+            `To use the absence.io API you will need an API Key. To generate an API Key, please go to your profile ( https://app.absence.io/#/actions/login ) in your absence.io account and click on the Integrations link. Here you can generate an API Key by clicking on the 'Generate API Key' button.`,
         );
         const apiKeyIdQuestion = { type: 'input', name: 'apiKeyId', message: 'Please enter your api ID' };
         const apiKeyQuestion = { type: 'input', name: 'apiKey', message: 'Please enter your api Key' };
