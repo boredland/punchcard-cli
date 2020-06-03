@@ -1,24 +1,24 @@
 {
-    "name": "absence-cli",
+    "name": "punchcard",
     "version": "0.0.1",
-    "description": "absence-cli CLI",
     "private": true,
     "types": "build/types/types.d.ts",
     "bin": {
-        "absence-cli": "bin/absence-cli"
+        "punchcard-cli": "bin/punchcard-cli"
+    },
+    "engines": {
+        "node": ">=14"
     },
     "scripts": {
-        "lint": "eslint '*/**/*.{js,ts,tsx,json}' --quiet --fix",
-        "clean-build": "rm -rf ./build",
-        "compile": "tsc -p .",
-        "copy-templates": "if [ -e ./src/templates ]; then cp -a ./src/templates ./build/; fi",
-        "build": "yarn format && yarn lint && yarn clean-build && yarn compile && yarn copy-templates",
+        "prebuild": "yarn lint:fix",
+        "build": "rm -rf ./build && tsc -p .",
+        "cli": "node bin/punchcard-cli",
+        "coverage": "jest --coverage",
+        "lint:fix": "eslint --ext .ts,.js,.json --fix ./src",
         "prepublishOnly": "yarn build",
-        "cli": "node bin/absence-cli",
-        "test": "jest",
-        "watch": "jest --watch",
         "snapupdate": "jest --updateSnapshot",
-        "coverage": "jest --coverage"
+        "test": "jest",
+        "watch": "jest --watch"
     },
     "files": [
         "tsconfig.json",
@@ -29,26 +29,37 @@
         "docs",
         "bin"
     ],
+    "keywords": [
+        "cli",
+        "absence.io",
+        "time",
+        "tracking",
+        "records"
+    ],
     "license": "MIT",
     "dependencies": {
-        "gluegun": "latest"
+        "@hapi/hawk": "^8.0.0",
+        "@lenne.tech/gluegun-menu": "^0.0.4",
+        "absence.io": "^1.2.0",
+        "date-prompt": "^0.7.0",
+        "gluegun": "latest",
+        "luxon": "^1.24.1"
     },
     "devDependencies": {
-        "@commitlint/cli": "^8.3.5",
         "@commitlint/config-conventional": "^8.3.4",
         "@types/jest": "^24.0.18",
-        "@types/node": "^14.0.6",
-        "@typescript-eslint/eslint-plugin": "^3.0.2",
-        "@typescript-eslint/parser": "^3.0.2",
+        "@types/luxon": "^1.24.0",
+        "@types/node": "^12.7.11",
+        "@typescript-eslint/eslint-plugin": "^3.1.0",
+        "@typescript-eslint/parser": "^3.1.0",
         "eslint": "^7.1.0",
         "eslint-config-prettier": "^6.11.0",
         "eslint-plugin-prettier": "^3.1.3",
         "husky": "^4.2.5",
-        "jest": "^24.1.0",
+        "jest": "^26.0.1",
         "lint-staged": "^10.2.7",
         "prettier": "^2.0.5",
-        "ts-jest": "^24.1.0",
-        "ts-node": "^8.4.1",
+        "ts-node": "^8.10.2",
         "typescript": "^3.6.3"
     },
     "jest": {
@@ -61,8 +72,6 @@
         }
     },
     "lint-staged": {
-        "*.{js,ts,tsx,json}": [
-            "eslint --fix"
-        ]
+        "*.{js,jsx,ts,tsx}": "eslint --cache --fix"
     }
 }

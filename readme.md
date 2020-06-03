@@ -1,10 +1,30 @@
-# absence-cli CLI
+# Punchcard-CLI
 
-A CLI for absence-cli.
+Time recording for the command line. Work with your favorite provider or the provider your employer dictates.
 
-## Customizing your CLI
+## Supported Providers
 
-Check out the documentation at https://github.com/infinitered/gluegun/tree/master/docs.
+- absence.io
+
+### Planned Providers
+
+- timesheet.io
+- toggl.com
+
+## Usage
+
+- `yarn cli auth absence`
+- `yarn cli track start`
+- `yarn cli track stop`
+- `yarn cli track status`
+- `yarn cli track list`
+
+### Neartime plans
+
+- npmjs release
+- add ci
+- help menus
+- filtering options for `track list`
 
 ## Publishing to NPM
 

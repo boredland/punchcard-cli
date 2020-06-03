@@ -1,24 +1,16 @@
 import { build } from 'gluegun';
 
-/**
- * Create the cli and kick it off
- */
-async function run(argv) {
-    // create a CLI runtime
+async function run(argv: string[]) {
+    if (!argv[3]) argv.push('tracking');
     const cli = build()
-        .brand('absence-cli')
+        .brand('punchcard')
         .src(__dirname)
-        .plugins('./node_modules', { matching: 'absence-cli-*', hidden: true })
-        .help() // provides default for help, h, --help, -h
-        .version() // provides default for version, v, --version, -v
+        .plugins('./node_modules', { matching: 'punchcard-*', hidden: true })
+        .help()
+        .version()
+        .exclude(['meta', 'filesystem', 'semver', 'system', 'http', 'template', 'patching', 'package-manager'])
         .create();
-    // enable the following method if you'd like to skip loading one of these core extensions
-    // this can improve performance if they're not necessary for your project:
-    // .exclude(['meta', 'strings', 'print', 'filesystem', 'semver', 'system', 'prompt', 'http', 'template', 'patching', 'package-manager'])
-    // and run it
     const toolbox = await cli.run(argv);
-
-    // send it back (for testing, mostly)
     return toolbox;
 }
 

@@ -1,17 +1,5 @@
-import { GluegunToolbox } from 'gluegun';
+import { IToolbox } from '../types';
 
-// add your CLI-specific functionality here, which will then be accessible
-// to your commands
-module.exports = (toolbox: GluegunToolbox) => {
-    toolbox.foo = () => {
-        toolbox.print.info('called foo extension');
-    };
-
-    // enable this if you want to read configuration in from
-    // the current folder's package.json (in a "absence-cli" property),
-    // absence-cli.config.json, etc.
-    // toolbox.config = {
-    //   ...toolbox.config,
-    //   ...toolbox.config.loadConfig(process.cwd(), "absence-cli")
-    // }
+module.exports = (toolbox: IToolbox) => {
+    toolbox.print.warnmark = toolbox.print.colors.warning('⚠');
 };
