@@ -11,13 +11,22 @@ Time recording for the command line. Work with your favorite provider or the pro
 - timesheet.io
 - toggl.com
 
+## Install
+
+- your shell profile already should `export PATH="$PATH:$(yarn global bin)"`
+- `yarn global add @boredland/punchcard-cli`
+
+### Upgrade
+
+- `yarn global upgrade @boredland/punchcard-cli`
+
 ## Usage
 
-- `yarn cli auth absence`
-- `yarn cli track start`
-- `yarn cli track stop`
-- `yarn cli track status`
-- `yarn cli track list`
+- `punchcard-cli auth absence`
+- `punchcard-cli track start`
+- `punchcard-cli track stop`
+- `punchcard-cli track status`
+- `punchcard-cli track list`
 
 ### Neartime plans
 

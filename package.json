@@ -1,5 +1,5 @@
 {
-    "name": "punchcard",
+    "name": "@boredland/punchcard-cli",
     "version": "0.0.1",
     "private": false,
     "types": "build/types/types.d.ts",
