@@ -7,7 +7,7 @@
         "punchcard-cli": "bin/punchcard-cli"
     },
     "engines": {
-        "node": ">=14"
+        "node": ">=10"
     },
     "scripts": {
         "prebuild": "yarn lint:fix",
